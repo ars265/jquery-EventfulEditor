@@ -1,4 +1,6 @@
-jquery-EventfulEditor
+EventfulEditor {Beta} - Powered by Everyday Events
 =====================
 
-A jquery plugin for rich text editing on modern browsers that is event based.
+A jquery plugin for rich text editing on modern browsers that is event based. See the wiki for all documentation.
+
+Eventful Editor adds the flexibility and power of Events with content editing. Ok, so what's different from the other fifty out there? Well, everything. Most editors use the power of contenteditable or designmode to allow you to use browser based triggers to wrap content. Some of them are even nice enough to try to make the browser formats the same. We don't. We say we don't care what the browser can do, we want absolute control. If I want the **B** button to make it italics, I will. In this concept we can provide more functionality and better support for everything. Now if you like the controls the browser has, use them, you have that right, but if you don't, use anything you like. Ok, but seriously, let me guess you guys have the worse UI ever? Nope, we got rid of it. we give you access to events, if you want to make a button to trigger an action, go ahead. We give you, through the power of jQuery, the ability to listen, attach, and trigger events, you don't even need the buttons to start. If you know the user is done selecting you can ask the user what they want to do next! Take charge of the experience and make it the best it's ever been. So where is the catch? We don't support IE version 8 or below, and we only support running in non-quirks mode. Damn shame isn't it, but with growing technologies there is a time and place for older browsers and we had to draw a line to support the future.
