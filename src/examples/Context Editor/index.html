@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="jquery-expand.js"></script>
+<script type="text/javascript" src="Utilities.js"></script>
+<script type="text/javascript" src="EventfulEditor.js"></script>
+<style type="text/css" media="screen, print">
+    @font-face {
+	    font-family: 'BLOKKRegular';
+	    src: url('blokk.eot');
+	    src: url('blokk.eot?#iefix') format('embedded-opentype'),
+	         url('blokk.woff') format('woff'),
+	         url('blokk.svg#BLOKK') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+    
+    .ee-editor {
+    	font-family: "BLOKKRegular", serif;
+	    font-size: 12px;
+	    line-height: 1.25em;
+    }
+    
+    .icon {
+    	width: 24px;
+    	margin: 2px;
+    	padding: 3px;
+    	border: 1px solid #333;
+    	-webkit-border-radius: 3px;
+    	-moz-border-radius: 3px;
+    	border-radius: 3px;
+	}
+	
+	.sep {
+		background-color: black;
+		width: 2px;
+		height: 24px;
+		margin: 5px;
+    	padding: 0;
+	}
+	
+	#toolbar{
+		display: inline-block;
+		background-color: #eee;
+		-webkit-border-radius: 3px;
+    	-moz-border-radius: 3px;
+    	border-radius: 3px;
+    	padding: 4px 4px 0 4px;
+		/*position: relative;*/
+	}
+  </style>
+</head>
+<body>
+
+<div id="3">Groupon right-sizing in the slot AOL location-based Facebook Rupert Murdoch Gannett tools, awesome right-sizing Knight Foundation Kindle Single audience atomization overcome crowdsourcing A.J. Liebling, Zite nonprofit Neil Postman Android tools David Cohn open source. going forward every dog loves food curation commons-based peer production Project Thunderdome cancel my subscription blog dying, Snarkmarket Storify the power of the press belongs to the person who owns one cops beat vast wasteland Reuters TweetDeck going forward, view from nowhere digital first linking do what you do best and link to the rest dead trees TBD.
+
+data visualization Instagram fourth estate Instagram retweet Robin Sloan Ushahidi curmudgeon, Knight News Challenge engagement anonymity innovation CTR. cops beat backpack journalist SEO AOL curation innovation plagiarism, paidContent metered model Reuters open source do what you do best and link to the rest retweet Instagram, people formerly known as the audience future of narrative fair use cops beat audience atomization overcome.</div>
+
+<span id="toolbar"><img class="fn-bold icon" src="black/png/font_bold_icon&16.png" alt="B"/><img class="fn-italic icon" src="black/png/font_italic_icon&16.png" alt="I"/><img class="fn-underline icon" src="black/png/font_underline_icon&16.png" alt="U"/><span class="sep"></span><img class="fn-copy icon" src="black/png/clipboard_copy_icon&16.png" alt="C"/><img class="fn-cut icon" src="black/png/clipboard_cut_icon&16.png" alt="X"/></span>
+
+
+<script type="text/javascript">
+
+var t = null;
+$(function(){
+
+var tool = $("#toolbar");
+var tdim = {height: tool.height(), width: tool.width()};
+tool.hide();
+var h = function(){
+
+	var efinal = arguments[0].efinal;
+	var position = {left: efinal.pageX - tdim.width, top: efinal.pageY + tdim.height};
+	//console.log(arguments[0].efinal);
+	if(t != null){
+		clearTimeout(t);	
+	}
+	var tf = null;
+	t = setTimeout(function(){
+		tool.fadeIn(400, function(){ tool.css("display", "inline-block"); });
+		tool.offset(position);
+		tool.on("mouseout", function(){
+			if(tf != null){ clearTimeout(tf); }
+			tf = setTimeout(function(){
+				tool.off("mouseout");
+				tool.fadeOut();
+			}, 2000);
+		});
+		tool.on("mousemove", function(){
+			if(tf != null){ clearTimeout(tf); }
+		});
+		tf = setTimeout(function(){
+			tool.fadeOut();
+		}, 2000);
+	}, 1000);
+};
+$("#3").ee({previewEditOnly: true}, function(){ arguments[0].editor.data("preview").addClass("ee-editor"); });
+//$("#3").EventfulEditor("on", "click", h);
+//$("#3").EventfulEditor("on", "selectstart", function(e){ console.log("selection Started"); });
+$("#3").EventfulEditor("on", "selectionchange", h);
+//$("#3").ee("off", "click", clickcall);
+$("#3").ee("on", "unload", function(){ console.log("unloading resources"); });
+
+tool.find(".fn-bold").on("click", function(){ document.execCommand("bold",false); });
+tool.find(".fn-italic").on("click", function(){ document.execCommand("italic",false); });
+tool.find(".fn-underline").on("click", function(){ document.execCommand("underline",false); });
+tool.find(".fn-copy").on("click", function(){ 
+	try{
+		if(!document.execCommand("copy",false)){alert("Your browser does not support the copy functionality.");}
+	}catch(err){
+		alert("Your browser does not support the copy functionality.");
+	}
+});
+tool.find(".fn-cut").on("click", function(){
+	try{
+		if(!document.execCommand("cut",false)){alert("Your browser does not support the cut functionality.");}
+	}catch(err){
+		alert("Your browser does not support the cut functionality.");
+	}
+});
+
+});
+</script>
+</body>
+</html>
